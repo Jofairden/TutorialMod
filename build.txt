@@ -1,0 +1,9 @@
+author = gorateron
+version = 1.0
+displayName = Tutorial Mod
+homepage = http://forums.terraria.org/index.php?threads/tutorial-1-your-first-mod.44817/
+hideCode = false
+hideResources = false
+includeSource = true
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*
+includePDB = true
