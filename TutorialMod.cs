@@ -115,26 +115,35 @@ namespace TutorialMod
 
             // IGNORE THIS
             // (Gets all ModItem classes, and makes an empty recipe for them)
-            var type = typeof(ModItem);
-            var exporters = Assembly.GetExecutingAssembly().GetTypes().Where(t => t != type && type.IsAssignableFrom(t));
-            if (exporters.Any())
+            //var type = typeof(ModItem);
+            //var exporters = Assembly.GetExecutingAssembly().GetTypes().Where(t => t != type && type.IsAssignableFrom(t));
+            //if (exporters.Any())
+            //{
+            //    foreach (var item in exporters)
+            //    {
+            //        var className = item.Name;
+            //        var strnamespace = item.Namespace;
+            //        var rootNamespace = strnamespace.Substring(0, strnamespace.IndexOf('.'));
+            //        if (rootNamespace == typeof(TutorialMod).Name)
+            //        {
+            //            Type t = Type.GetType(strnamespace + "." + className);
+            //            if (t != null)
+            //            {
+            //                recipe = new ModRecipe(this);
+            //                recipe.SetResult(mod.ItemType(className));
+            //                recipe.AddRecipe();
+            //            }
+            //        }
+            //    }
+            //}
+            // Thanks jopo
+            FieldInfo itemsinfo = typeof(Mod).GetField("items", BindingFlags.Instance | BindingFlags.NonPublic);
+            IDictionary<string, ModItem> items = (IDictionary<string, ModItem>)itemsinfo.GetValue(this);
+            foreach (ModItem item in items.Values)
             {
-                foreach (var item in exporters)
-                {
-                    var className = item.Name;
-                    var strnamespace = item.Namespace;
-                    var rootNamespace = strnamespace.Substring(0, strnamespace.IndexOf('.'));
-                    if (rootNamespace == typeof(TutorialMod).Name)
-                    {
-                        Type t = Type.GetType(strnamespace + "." + className);
-                        if (t != null)
-                        {
-                            recipe = new ModRecipe(this);
-                            recipe.SetResult(mod.ItemType(className));
-                            recipe.AddRecipe();
-                        }
-                    }
-                }
+                recipe = new ModRecipe(this);
+                recipe.SetResult(item);
+                recipe.AddRecipe();
             }
             // IGNORE ABOVE
         }
