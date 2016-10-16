@@ -23,7 +23,7 @@ namespace TutorialMod
 
             // If item is ranged, decrease damage by 50 (make sure we don't go below 0, probably isn't required)
             // also in the second part, we are making sure to ignore our own items
-            if (item.ranged && (item.modItem != null && item.modItem.mod != mod))
+            if (item.ranged && (item.modItem != null && item.modItem.mod != TutorialMod.mod))
             {
                 item.damage = Math.Max(0, item.damage - 50);
             }
@@ -52,7 +52,7 @@ namespace TutorialMod
             Color msgColor = Colors.CoinGold;
             bool addMsg = false;
             // these 2 are easy to check
-            if (item.type == ItemID.WoodenSword || (item.ranged && (item.modItem != null && item.modItem.mod != mod))
+            if (item.type == ItemID.WoodenSword || (item.ranged && (item.modItem != null && item.modItem.mod != TutorialMod.mod)))
             {
                 addMsg = true;
             }
