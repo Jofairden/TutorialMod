@@ -5,8 +5,8 @@ using Terraria.ModLoader;
 
 namespace TutorialMod.Items
 {
-	public class MyFirstItem : ModItem
-	{
+    public class MyFirstItem : ModItem
+    {
         public override void SetDefaults()
         {
             item.name = "My First Item";

@@ -13,7 +13,7 @@ namespace TutorialMod
     // http://forums.terraria.org/index.php?threads/tutorial-1-your-first-mod.44817/
 
     class TutorialMod : Mod
-	{
+    {
         // Create a static mod variable, we can use in places we normally don't have access to a mod variable!
         // This is set in Load()
         public static TutorialMod mod
@@ -23,15 +23,15 @@ namespace TutorialMod
 
         // Make sure Autoload is true, it saves a lot of code in the Load() hook
         public TutorialMod()
-		{
-			Properties = new ModProperties()
-			{
-				Autoload = true,
-				AutoloadGores = true,
-				AutoloadSounds = true,
+        {
+            Properties = new ModProperties()
+            {
+                Autoload = true,
+                AutoloadGores = true,
+                AutoloadSounds = true,
                 AutoloadBackgrounds = true
-			};
-		}
+            };
+        }
 
         public override void Load()
         {
